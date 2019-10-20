@@ -14,6 +14,7 @@ view: breweries {
   }
 
   dimension: brewery_city {
+    hidden: yes
     type: string
     sql: ${TABLE}.string_field_2 ;;
   }
@@ -21,12 +22,13 @@ view: breweries {
   dimension: brewery_state {
     type: string
     map_layer_name: us_states
-    sql: ${TABLE}.string_field_3 ;;
+    sql: TRIM(${TABLE}.string_field_3) ;;
   }
 
-  dimension: city_state_key {
-    hidden: yes
-    sql: CONCAT(${brewery_city},', ',${brewery_state} ;;
+  dimension: brewery_city_state {
+    label: "Brewery City"
+    type: string
+    sql: CONCAT(${brewery_city},', ',${brewery_state}) ;;
   }
 
   measure: count {

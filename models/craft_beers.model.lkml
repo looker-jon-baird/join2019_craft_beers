@@ -18,4 +18,19 @@ explore: beers {
     relationship: many_to_one
     sql_on: ${beers.brewery_id} = ${breweries.id} ;;
   }
+
+  join: geoinfo_city {
+    view_label: "Geographic Information"
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${breweries.brewery_city_state} = ${geoinfo_city.city_state} ;;
+  }
+}
+
+explore: geoinfo_zip {
+  hidden: yes
+}
+
+explore: geoinfo_city {
+  hidden: yes
 }

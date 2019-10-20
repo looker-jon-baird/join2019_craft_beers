@@ -1,4 +1,4 @@
-view: geography {
+view: geoinfo_zip {
   sql_table_name: craft_beers.geography ;;
 
   dimension: zip_code {
@@ -7,13 +7,14 @@ view: geography {
   }
 
   dimension: city_state_key {
+    label: "City"
     type: string
     sql: CONCAT(${TABLE}.primary_city,', ',${TABLE}.state) ;;
   }
 
   dimension: population {
-  type: number
-  sql: ${TABLE}.POPULATION_COUNT ;;
+    type: number
+    sql: ${TABLE}.POPULATION_COUNT ;;
   }
 }
 
